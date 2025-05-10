@@ -41,11 +41,13 @@ typedef struct
 {
     char *name;
     struct ASTNode *args;
+    int line_number; // Add line number field
 } ASTFunctionCall;
 
 struct ASTNode
 {
     ASTNodeType type;
+    int line_number; // Add line number field for all nodes
 
     union
     {
@@ -100,6 +102,7 @@ struct ASTNode
             struct ASTNode *params;
             struct ASTNode *return_type;
             struct ASTNode *body;
+            int line_number; // Add line number tracking for functions
         } function_def;
 
         /* בלוק פקודות */

@@ -1,14 +1,13 @@
 # Test file with various valid function definitions and statements
 
 # Function with multiple parameters of same type and default values
-def foo1(int x:6, y; float z:15): {
+def foo(int x, y:17; float z:15): {
     int i;
     float m = 3.14, n = 9.8;
-    return 0;
 }
 
 # Function with different parameter types and return type
-def foo(int x; float y; string z)->int: {
+def foo1(int x; float y; string z)->int: {
     x = 5;
     y = 5+10;
     return 0;
@@ -76,10 +75,15 @@ def mixed(int x; float y)->float: {
     if (x > 3): {
         return y;
     }
-    return 2;
+    return 3.5;
 }
 
 # Main function (required)
 def __main__(): {
+   # foo();      # Error: Too few arguments working!
+    foo(2);     # OK: y and z have defaults
+    foo(1,2);   # OK: z has default
+    foo(1,2,3); # OK: all arguments provided
+#   foo(1,2,3,4); # Error: Too many arguments
     pass;
 } 

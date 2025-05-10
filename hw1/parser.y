@@ -243,8 +243,12 @@ function_body:
     ;
 
 function_def:
-    DEF IDENTIFIER LPAREN param_list_opt RPAREN return_type_opt COLON function_body {
-        $$ = create_function_def($2, $4, $6, $8);
+    DEF IDENTIFIER {
+        // Store the line number as soon as we see the DEF token
+        $<intval>$ = yylineno;
+    } LPAREN param_list_opt RPAREN return_type_opt COLON function_body {
+        $$ = create_function_def($2, $5, $7, $9);
+        $$->function_def.line_number = $<intval>3;  // Use the stored line number
     }
     ;
 

@@ -18,6 +18,7 @@ struct ASTNode *create_node(ASTNodeType type)
     // Initialize all fields to safe defaults
     memset(node, 0, sizeof(struct ASTNode));
     node->type = type;
+    node->line_number = yylineno; // Initialize line number
     return node;
 }
 
@@ -190,6 +191,7 @@ struct ASTNode *create_function_def(const char *name, struct ASTNode *params, st
     node->function_def.params = params;
     node->function_def.return_type = return_type;
     node->function_def.body = body;
+    node->function_def.line_number = yylineno; // Store the current line number
     return node;
 }
 
@@ -270,6 +272,8 @@ struct ASTNode *create_function_call(const char *name, struct ASTNode *args)
     struct ASTNode *node = create_node(AST_FUNCTION_CALL);
     node->function_call.name = strdup(name);
     node->function_call.args = args;
+    node->function_call.line_number = yylineno; // Store the current line number
+    node->line_number = yylineno;               // Store line number in the node itself
     return node;
 }
 
