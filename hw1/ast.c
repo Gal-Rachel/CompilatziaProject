@@ -4,6 +4,8 @@
 #include "ast.h"
 #include "parser.tab.h"
 
+extern int yylineno; // Add external declaration for yylineno
+
 // Helper function to create a new AST node
 struct ASTNode *create_node(ASTNodeType type)
 {
@@ -257,7 +259,8 @@ struct ASTNode *create_param_with_default(const char *name, struct ASTNode *defa
         return NULL;
     }
     node->param.default_value = default_value;
-    node->param.type = 0; // Initialize type to 0, will be set later
+    node->param.type = 0;               // Initialize type to 0, will be set later
+    node->param.line_number = yylineno; // Store the current line number
     return node;
 }
 
@@ -379,6 +382,7 @@ struct ASTNode *create_multiple_assignment(struct ASTNode *lhs_list, struct ASTN
 
 struct ASTNode *create_program(struct ASTNode *statements)
 {
+    printf("DEBUG: Creating program node with statements %p\n", (void *)statements);
     struct ASTNode *node = create_node(AST_PROGRAM);
     if (!node)
     {
@@ -386,6 +390,10 @@ struct ASTNode *create_program(struct ASTNode *statements)
         return NULL;
     }
     node->program.statements = statements;
+    if (statements)
+    {
+        printf("DEBUG: Program node created with statements type: %d\n", statements->type);
+    }
     return node;
 }
 

@@ -122,6 +122,7 @@ struct ASTNode
             int type;
             char *name;
             struct ASTNode *default_value; // Optional default value
+            int line_number;               // Add line number tracking
         } param;
 
         /* Variable declaration */

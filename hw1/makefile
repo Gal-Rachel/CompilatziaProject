@@ -5,6 +5,7 @@ LEX_C = lex.yy.c
 PARSER_C = parser.tab.c
 PARSER_H = parser.tab.h
 AST_C = ast.c
+SEMANTIC_C = semantic.c
 OUTPUT = my_program
 TEST_FILE = test_input.txt
 
@@ -27,8 +28,8 @@ $(PARSER_C) $(PARSER_H): $(PARSER)
 	$(BISON) -d $(PARSER)
 
 # Rule to compile the lexer and parser into the executable
-$(OUTPUT): $(LEX_C) $(PARSER_C) $(AST_C)
-	$(CC) $(CFLAGS) $(LEX_C) $(PARSER_C) $(AST_C) -o $(OUTPUT) $(LDFLAGS)
+$(OUTPUT): $(LEX_C) $(PARSER_C) $(AST_C) $(SEMANTIC_C)
+	$(CC) $(CFLAGS) $(LEX_C) $(PARSER_C) $(AST_C) $(SEMANTIC_C) -o $(OUTPUT) $(LDFLAGS)
 
 # Rule to run the program with the TEST.TXT file and print the AST
 run: $(OUTPUT)

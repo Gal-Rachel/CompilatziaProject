@@ -14,7 +14,7 @@ void yyerror(const char *s);
 
 %%
 
-[ \t\n]         ; /* Skip whitespace */
+[ \t\n\r]         ; /* Skip whitespace including carriage return */
 "#".*           ; /* Skip comments */
 
 "def"           { return DEF; }

@@ -1,33 +1,29 @@
 # Test file with various valid function definitions and statements
 
 # Function with multiple parameters of same type and default values
-def foo1(int x, y:17; float z:15): 
-{ 
-    int i; 
-    float m = 3.14, n = 9.8; 
-    return 0; 
+def foo1(int x:6, y; float z:15): {
+    int i;
+    float m = 3.14, n = 9.8;
+    return 0;
 }
 
 # Function with different parameter types and return type
-def foo(int x; float y; string z)->int: 
-{ 
-    x = 5; 
-    y = 5+10; 
-    return 0; 
+def foo(int x; float y; string z)->int: {
+    x = 5;
+    y = 5+10;
+    return 0;
 }
 
 # Function with no parameters and string return type
-def goo()->string:
-{
-    string name  = "hello" ;
+def goo()->string: {
+    string name = "hello";
     string b = name[0:3];
     string c = name[1:3:2];
-    return name[2]; 
+    return name[2];
 }
 
 # Function with boolean parameters and default values
-def check(bool flag:true, status:false)->bool:
-{
+def check(bool flag:true, status:false)->bool: {
     if (flag): {
         return true;
     }
@@ -35,25 +31,22 @@ def check(bool flag:true, status:false)->bool:
 }
 
 # Function with string parameters and operations
-def process(string text, prefix:'hello')->string:
-{
+def process(string text, prefix:"hello")->string: {
     string result = prefix + text;
     return result;
 }
 
 # Function with float parameters and arithmetic
-def calculate(float a:1.0, b:2.0)->float:
-{
+def calculate(float a:1.0, b:2.0)->float: {
     float result = a * b + 3.14;
     return result;
 }
 
 # Function with multiple statements and variable declarations
-def complex(int x; float y)->int:
-{
+def complex(int x; float y)->int: {
     int i = 0;
     float sum = 0.0;
-    while (i < x) :{
+    while (i < x): {
         sum = sum + y;
         i = i + 1;
     }
@@ -61,8 +54,7 @@ def complex(int x; float y)->int:
 }
 
 # Function with if-else statements and boolean operations
-def compare(int a, b)->bool:
-{
+def compare(int a, b)->bool: {
     if (a > b): {
         return true;
     } else: {
@@ -71,26 +63,23 @@ def compare(int a, b)->bool:
 }
 
 # Function with string operations
-def string_ops(string s1, s2:'world')->string:
-{
+def string_ops(string s1, s2:"world")->string: {
     string result = s1 + s2;
     return result;
 }
 
 # Function with multiple return types
-def mixed(int x; float y)->float:
-{
-    if (x != 0) :{
+def mixed(int x; float y)->float: {
+    if (x != 0): {
         return y;
     }
-    if (x > 3) :{
+    if (x > 3): {
         return y;
     }
     return 2;
 }
 
 # Main function (required)
-def __main__():
-{
+def __main__(): {
     pass;
 } 
