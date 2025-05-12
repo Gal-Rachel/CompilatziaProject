@@ -1,1 +1,50 @@
 
+def __main__(arg1):  # ❌ __main__ מקבלת ארגומנט
+    return 5          # ❌ __main__ מחזירה ערך
+
+def foo(x: int, y: float) -> float:
+    return x + y
+
+def foo(z):  # ❌ פונקציה בשם foo מוגדרת פעמיים באותו scope
+    return z
+
+a = 5
+a = 10  # ❌ משתנה בשם a מוגדר פעמיים באותו scope
+
+def bar():
+    print(undeclared_var)  # ❌ שימוש במשתנה לפני שהוגדר
+
+foo(1, 2, 3)  # ❌ יותר מדי ארגומנטים
+
+def baz(x: int, y: int = "default") -> int:  # ❌ ערך ברירת מחדל שגוי
+    return x + y
+
+def compare(a: int, b: int) -> bool:
+    return a + b  # ❌ טיפוס ההחזרה אמור להיות bool
+
+def check_if():
+    if 5:  # ❌ תנאי if שאינו מסוג bool
+        print("bad if")
+
+def check_while():
+    while "loop":  # ❌ תנאי לולאה שאינו מסוג bool
+        break
+
+s = "hello"
+char = s["one"]  # ❌ אינדקס מחרוזת לא מסוג int
+
+lst = [1, 2, 3]
+item = lst[0]  # ❌ שימוש ב-[] על רשימה - לא מחרוזת (בהקשר הדרישה שלך)
+
+x: int = 3.14  # ❌ השמה של float למשתנה מסוג int
+
+def logic_mistake():
+    return 5 and True  # ❌ אופרטור and בין int ו-bool
+
+def compare_wrong():
+    return 5 == "5"  # ❌ השוואה בין טיפוסים שונים
+
+def use_not():
+    return not 1  # ❌ not מופעל על טיפוס שאינו bool
+
+result = 3 + "5"  # ❌ חיבור בין int למחרוזת
